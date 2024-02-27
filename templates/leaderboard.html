@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houses Leaderboard</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .house {
+            margin-bottom: 10px;
+        }
+
+        .house-name {
+            font-weight: bold;
+        }
+
+        .points {
+            color: #888;
+        }
+
+        .top-houses {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Top Three Houses</h1>
+        <div class="top-houses">
+            {% for house, points in top_three %}
+            <div class="house">
+                <span class="house-name">{{ house }}</span>
+                <span class="points">{{ points }} points</span>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <h1>All Houses</h1>
+        <table>
+            <tr>
+                <th>Event</th>
+                {% for column in house_points.columns %}
+                <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for index, row in house_points.iterrows() %}
+            <tr>
+                <td>{{ index }}</td>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
