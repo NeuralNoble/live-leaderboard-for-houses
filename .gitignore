@@ -1,3 +1,5 @@
 myenv/
 .DS_Store
 
+instance/leaderboard.db
+/instance
