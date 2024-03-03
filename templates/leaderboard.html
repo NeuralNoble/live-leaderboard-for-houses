@@ -3,86 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Three Houses</title>
+    <title>Leaderboard</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f; /* Dark background color */
+            color: #ffffff; /* Light text color */
+            margin: 0;
+            padding: 0;
+        }
+        .spacer {
+            height: 60px; /* Adjust spacing as needed */
+        }
+
         .container {
             max-width: 800px;
             margin: 20px auto;
-        }
-
-        .house {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .house-name {
-            font-weight: bold;
-        }
-
-        .points {
-            color: #888;
+            padding: 20px;
+            background-color: #2b2b2b; /* Darker background for container */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for container */
         }
 
         .top-houses {
             display: flex;
             justify-content: space-between;
             margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .house {
+            text-align: center;
+            transition: transform 0.3s ease; /* Animation for first position */
+        }
+
+        .house:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        .house img {
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            border-radius: 50%; /* Rounded corners for images */
+            margin-bottom: 10px;
+        }
+
+        .house-name {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .points {
+            color: #aaa;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 40px;
+            color: #ffffff; /* Light text color for table */
         }
 
         th, td {
             padding: 8px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #444; /* Dark border color for table */
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #333; /* Dark background color for table header */
         }
 
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #444; /* Darker background color for even rows */
         }
 
-        .logo {
-            width: 100px; /* Adjust size as needed */
-            height: 100px; /* Adjust size as needed */
-            margin-bottom: 10px;
+        @media (max-width: 600px) {
+            .top-houses {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Top Three Houses</h1>
+        <h1>Leaderboard</h1>
         <div class="top-houses">
             <div class="house">
                 <h2>2nd House</h2>
-                <img src="{{ url_for('static', filename=top_three[1].logo_filename) }}" alt="{{ top_three[1].name }}" class="logo">
+                <img src="{{ url_for('static', filename=top_three[1].logo_filename) }}" alt="{{ top_three[1].name }}">
                 <p class="house-name">{{ top_three[1].name }}</p>
                 <p class="points">{{ top_three[1].points }} points</p>
             </div>
 
             <div class="house">
                 <h2>1st House</h2>
-                <img src="{{ url_for('static', filename=top_three[0].logo_filename) }}" alt="{{ top_three[0].name }}" class="logo">
+                <img src="{{ url_for('static', filename=top_three[0].logo_filename) }}" alt="{{ top_three[0].name }}">
                 <p class="house-name">{{ top_three[0].name }}</p>
                 <p class="points">{{ top_three[0].points }} points</p>
             </div>
 
             <div class="house">
                 <h2>3rd House</h2>
-                <img src="{{ url_for('static', filename=top_three[2].logo_filename) }}" alt="{{ top_three[2].name }}" class="logo">
+                <img src="{{ url_for('static', filename=top_three[2].logo_filename) }}" alt="{{ top_three[2].name }}">
                 <p class="house-name">{{ top_three[2].name }}</p>
                 <p class="points">{{ top_three[2].points }} points</p>
             </div>
         </div>
 
-        <h1>All Houses Points</h1>
+        <h2>All Houses Points</h2>
         <table>
             <tr>
                 <th>House</th>
@@ -100,5 +130,6 @@
             {% endfor %}
         </table>
     </div>
+ <div class="spacer"></div>
 </body>
 </html>
