@@ -3,4 +3,4 @@ myenv/
 
 instance/leaderboard.db
 /instance
-.idea/
+/.idea
